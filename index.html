@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FalaShow</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #A585FF;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+#loading-screen {
+  transition: opacity 0.5s ease-in-out;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none; /* Impede cliques durante a transição */
+}
+
+.tela {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.oculto {
+  display: none;
+}
+
+#telaInicial {
+  display: flex;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4A4AFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3A3ACF;
+}
+
+a {
+  color: white;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mascote {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.success {
+  background-color: #6FBC6B;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.success p {
+  margin: 10px 0;
+}
+.mascote {
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#progress-bar {
+  width: 200px;
+}
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Tela Inicial -->
+    <div id="telaInicial" class="tela">
+      <h1>FalaShow</h1>
+      <div class="loading">
+        <img src="/images/mascote.png" alt="Mascote" class="mascote">
+        <progress id="progress-bar" value="0" max="100"></progress>
+        <p id="loading-text">Carregando...</p>
+        <div id="loading-screen" class="tela">
+        </div>
+      </div>
+    </div>
+
+    <Script>
+        // JavaScript para atualizar a barra de progresso e o texto
+        const progressBar = document.getElementById('progress-bar');
+        const loadingText = document.getElementById('loading-text');
+document.getElementById('loading-screen').classList.add('fade-out');
+        
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += 10;
+          progressBar.value = progress;
+        
+          // Simples exemplo de troca de texto
+          if (progress === 50) {
+            loadingText.textContent = 'Conectando...';
+          } else if (progress === 100) {
+            clearInterval(interval);
+            // Aqui você faria a transição para a próxima tela
+            document.getElementById('telaInicial').style.display = 'none';
+            document.getElementById('telaLogin').style.display = 'flex'; // Supondo que você tenha uma tela de login com este ID
+          }
+        }, 500);
+
+    // Função para redirecionar após o carregamento
+    function redirectToLogin() {
+        window.location.href = "Assets/Jornada Inicial - Login/TelaLogin.html";
+    }
+
+    // Simulação do carregamento (substitua por sua lógica real)
+    setTimeout(redirectToLogin, 2000); // Redireciona após 2 segundos
+  
+    </Script>
+  

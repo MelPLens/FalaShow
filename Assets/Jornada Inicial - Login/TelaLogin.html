@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FalaShow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="telaLogin">
+    <h1>FalaShow</h1>
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Senha" required>
+      <a href="#">Esqueci a senha</a><br>
+      <button type="submit">Entrar</button><br>
+      <button type="submit">Primeiro Acesso</button>
+  </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #A585FF; /* Cor de fundo da imagem */
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3rem; /* Ajuste o tamanho conforme a imagem */
+  margin-bottom: 2rem;
+  /* Adicione estilos para simular o estilo da imagem */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Ajuste a largura conforme a imagem */
+}
+
+input {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+button {
+  padding: 1rem;
+  background-color: #4A4AFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+</style>
+
+<script>
+  const createAccountLink = document.getElementById('createAccountLink');
+
+createAccountLink.addEventListener('click', () => {
+  window.location.href = 'Assets/Jornada Inicial - Login/.html'
+});
+</script>
