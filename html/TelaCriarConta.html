@@ -8,6 +8,9 @@
 </head>
 <body>
   <div class="container">
+    <a href="../Login_Inicial.html">
+      <img src="../images/Back Arrow.png" alt="Voltar" class="back-arrow">
+    </a>
     <h1>FalaShow</h1>
     <h2>Criar Conta</h2>
     <form id="create-account-form">
@@ -17,10 +20,9 @@
       <input type="password" placeholder="Confirmar Senha" required>
       <button type="submit">Criar</button>
     </form>
-    <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+    <p>Já tem uma conta? <a href="../Login Inicial.html">Entrar</a></p>
   </div>
 
-  
   <script src="script.js"></script>
 </body>
 </html>
@@ -41,16 +43,31 @@ body {
 
 .container {
   width: 300px;
+  position: relative;
+}
+
+.back-arrow {
+  position: absolute;
+  top: -60px;
+  left: -5px;
+  width: 30px;
+  cursor: pointer;
 }
 
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  top: -90px;
+  left: -5px;
 }
 
 h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
+  top: -50px;
+  left: -5px;
+  
+
 }
 
 form {
@@ -110,7 +127,8 @@ form.addEventListener('submit', (event) => {
     if (response.ok) {
       alert('Conta criada com sucesso!');
       // Redirecionar para a tela de login
-      window.location.href = 'Assets/Jornada Inicial - Login/TelaLogin.html';
+      window.location.href = '../Login inicial.html';
+
     } else {
       alert('Erro ao criar a conta.');
     }
