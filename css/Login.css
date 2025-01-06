@@ -170,15 +170,15 @@
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     justify-content: center;
     align-items: center;
-    padding: 15px;
-    background: #9053c7;
-    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    padding: 23px;
+    background: #9B65F2;
+    background: -webkit-linear-gradient(-135deg, #9B65F2, #CCB1ED);
+    background: -o-linear-gradient(-135deg, #9B65F2, #CCB1ED);
+    background: -moz-linear-gradient(-135deg, #9B65F2, #CCB1ED);
+    background: linear-gradient(-135deg, #9B65F2, #CCB1ED);
   }
   
   .wrap-login100 {
@@ -194,13 +194,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 177px 130px 33px 95px;
+    padding: 17px 10px 33px 95px;
   }
   
   /*------------------------------------------------------------------
   [  ]*/
   .login100-pic {
-    width: 316px;
+    width: 31px;
   }
   
   .login100-pic img {
