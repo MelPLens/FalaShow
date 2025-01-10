@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progresso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #d9aaf5;
+      color: white;
+    }
+
+    #voltar-btn {
+      background-color: #5c2cb1;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    #voltar-btn:hover {
+      background-color: #5b35a8;
+    }
+
+    #paciente-info {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Progresso do Paciente</h1>
+  <div id="paciente-info"></div>
+
+  <button id="voltar-btn" onclick="voltarParaSelecao()">Voltar à Seleção de Pacientes</button>
+
+  <script>
+    // Função para obter o parâmetro 'paciente' da URL
+    function getPacienteFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('paciente');
+    }
+
+    // Função para voltar à tela de seleção de pacientes
+    function voltarParaSelecao() {
+      window.location.href = "Pacientes.html"; // Caminho para a tela de seleção de pacientes
+    }
+
+    // Carregar informações do paciente
+    const paciente = getPacienteFromURL();
+    if (paciente) {
+      document.getElementById("paciente-info").innerHTML = `Bem-vindo ao progresso do ${paciente}.`;
+    } else {
+      document.getElementById("paciente-info").innerHTML = 'Paciente não encontrado.';
+    }
+  </script>
+</body>
+</html>

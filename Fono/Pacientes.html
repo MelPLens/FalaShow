@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleção de Pacientes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #d9aaf5;
+      color: white;
+    }
+
+    .paciente-item {
+      background-color: #c8b7ea;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      color: #5b35a8;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .paciente-item:hover {
+      background-color: #5b35a8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Seleção de Pacientes</h1>
+  <div class="paciente-item" onclick="navigateToProgresso('paciente1')">Paciente 1</div>
+  <div class="paciente-item" onclick="navigateToProgresso('paciente2')">Paciente 2</div>
+  <div class="paciente-item" onclick="navigateToProgresso('paciente3')">Paciente 3</div>
+
+  <script>
+    function navigateToProgresso(paciente) {
+      // Redireciona para a página de progresso do paciente
+      window.location.href = `/Fono/Progresso.html?paciente=${paciente}`;
+    }
+  </script>
+</body>
+</html>
