@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro One Page</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #9C4AFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background-color: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Indicador de progresso */
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress .circle {
+      width: 15px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+
+    .progress .circle.active {
+      background-color: #4CAF50;
+    }
+
+    /* Título */
+    h1 {
+      color: #5C287F;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Botões e estilos */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button.back {
+      background-color: #fff;
+      border: 2px solid #9C4AFF;
+      color: #5C287F;
+    }
+
+    .button.back:hover {
+      background-color: #E0C9FF;
+    }
+
+    .button.next {
+      background-color: #ccc;
+      color: #808080;
+    }
+
+    .button.next.active {
+      background-color: #40EF78;
+      color: #53269B;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    form {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-container label {
+      font-weight: normal;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Indicador de progresso -->
+    <div class="progress">
+      <div class="circle active"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
+    <!-- Seção de Perfil -->
+    <div id="profile-section">
+      <h1>Perfil</h1>
+      <div class="profile-option" onclick="selectProfile('Paciente')">
+        Paciente<br><small>Fui recomendado por um profissional.</small>
+      </div>
+      <div class="profile-option" onclick="selectProfile('Fonoaudiólogo')">
+        Fonoaudiólogo<br><small>Irei utilizar o jogo no meu trabalho.</small>
+      </div>
+      <div class="button-container">
+        <button class="button next" onclick="showSection('personal-data-section')">Próximo</button>
+      </div>
+    </div>
+
+    <!-- Seção de Dados Pessoais -->
+    <div id="personal-data-section" class="hidden">
+      <h1>Dados Pessoais</h1>
+      <form id="personal-data-form">
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" required>
+        <label for="password">Senha *</label>
+        <input type="password" id="password" required>
+        <label for="confirm-password">Confirmar Senha *</label>
+        <input type="password" id="confirm-password" required>
+        <div class="button-container">
+          <button class="button back" onclick="showSection('profile-section')">Voltar</button>
+          <button class="button next" onclick="showSection('info-section')">Próximo</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Seção de Informações -->
+    <div id="info-section" class="hidden">
+      <h1>Informações</h1>
+      <form>
+        <div id="paciente-fields">
+          <label for="nome">Nome Completo *</label>
+          <input type="text" id="nome" required>
+          <label for="whatsapp">Whatsapp do Responsável *</label>
+          <input type="tel" id="whatsapp" required>
+          <label for="data-nascimento">Data de Nascimento *</label>
+          <input type="date" id="data-nascimento" required>
+        </div>
+        <div id="fono-fields" class="hidden">
+          <label for="nome-fono">Nome Completo *</label>
+          <input type="text" id="nome-fono" required>
+          <label for="registro">CRM ou Registro Profissional *</label>
+          <input type="text" id="registro">
+          <div class="checkbox-container">
+            <input type="checkbox" id="sem-registro">
+            <label for="sem-registro">Não possuo CRM ou Registro Profissional</label>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button back" onclick="showSection('personal-data-section')">Voltar</button>
+          <button type="submit" class="button next">Próximo</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Seção de Verificação -->
+    <div id="verification-section" class="hidden">
+      <h1>Verificação</h1>
+      <p>Enviamos um código de verificação para o seu e-mail cadastrado. Insira o código abaixo para continuar.</p>
+      <input type="text" id="verification-code" placeholder="Digite o código">
+      <p>Não recebeu o código? <span class="resend">Clique aqui para enviar novamente</span>.</p>
+      <button class="button verify" id="verify-button" disabled>Verificar</button>
+    </div>
+  </div>
+
+  <script>
+    let perfilSelecionado = '';
+
+    function selectProfile(profile) {
+      perfilSelecionado = profile;
+      document.querySelectorAll('.profile-option').forEach(option => option.classList.remove('selected'));
+      event.target.classList.add('selected');
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.container > div').forEach(section => section.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    // Verificar o código
+    const verificationCodeInput = document.getElementById('verification-code');
+    const verifyButton = document.getElementById('verify-button');
+
+    verificationCodeInput.addEventListener('input', () => {
+      if (verificationCodeInput.value.trim() !== '') {
+        verifyButton.disabled = false;
+        verifyButton.classList.add('active');
+      } else {
+        verifyButton.disabled = true;
+        verifyButton.classList.remove('active');
+      }
+    });
+
+    document.querySelector('.resend').addEventListener('click', () => {
+      alert('Um novo código foi enviado para o seu e-mail.');
+    });
+  </script>
+</body>
+</html>

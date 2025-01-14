@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #9C4AFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background-color: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Indicador de progresso */
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress .circle {
+      width: 15px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+
+    .progress .circle.active {
+      background-color: #4CAF50;
+    }
+
+    /* Título */
+    h1 {
+      color: #5C287F;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Formulário */
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #5C287F;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-container label {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    /* Botões */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button.back {
+      background-color: #fff;
+      border: 2px solid #9C4AFF;
+      color: #5C287F;
+    }
+
+    .button.back:hover {
+      background-color: #E0C9FF;
+    }
+
+    .button.next {
+      background-color: #40EF78;
+      color: #53269B;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- Indicador de progresso -->
+    <div class="progress">
+      <div class="circle active"></div>
+      <div class="circle active"></div>
+      <div class="circle active"></div>
+      <div class="circle"></div>
+    </div>
+
+    <!-- Título -->
+    <h1>Informações</h1>
+
+    <!-- Formulário -->
+    <form id="info-form">
+      <!-- Campos específicos -->
+      <div id="paciente-fields">
+        <label for="nome">Nome Completo *</label>
+        <input type="text" id="nome" required>
+
+        <label for="whatsapp">Whatsapp do Responsável *</label>
+        <input type="tel" id="whatsapp" required>
+
+        <label for="data-nascimento">Data de Nascimento *</label>
+        <input type="date" id="data-nascimento" required>
+
+        <label for="codigo">Possui Código de Convite?</label>
+        <input type="text" id="codigo">
+      </div>
+
+      <div id="fono-fields" style="display: none;">
+        <label for="nome-fono">Nome Completo *</label>
+        <input type="text" id="nome-fono" required>
+
+        <label for="registro">CRM ou Registro Profissional *</label>
+        <input type="text" id="registro">
+
+        <div class="checkbox-container">
+          <input type="checkbox" id="sem-registro">
+          <label for="sem-registro">Não possuo CRM ou Registro Profissional</label>
+        </div>
+
+        <label for="data-nascimento-fono">Data de Nascimento *</label>
+        <input type="date" id="data-nascimento-fono" required>
+      </div>
+
+      <!-- Botões -->
+      <div class="button-container">
+        <button type="button" class="button back">Voltar</button>
+        <button type="submit" class="button next">Próximo</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const pacienteFields = document.getElementById('paciente-fields');
+    const fonoFields = document.getElementById('fono-fields');
+    const semRegistroCheckbox = document.getElementById('sem-registro');
+
+    // Simula alternância entre perfis (adicione lógica real conforme necessário)
+    const perfilSelecionado = 'paciente'; // Altere para 'fono' para testar o outro perfil
+
+    if (perfilSelecionado === 'paciente') {
+      pacienteFields.style.display = 'block';
+      fonoFields.style.display = 'none';
+    } else {
+      pacienteFields.style.display = 'none';
+      fonoFields.style.display = 'block';
+    }
+
+    semRegistroCheckbox.addEventListener('change', () => {
+      const registroInput = document.getElementById('registro');
+      if (semRegistroCheckbox.checked) {
+        registroInput.disabled = true;
+        registroInput.value = '';
+      } else {
+        registroInput.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

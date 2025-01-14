@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Cadastro</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #9C4AFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background-color: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Indicador de progresso */
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress .circle {
+      width: 15px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+
+    .progress .circle.active {
+      background-color: #4CAF50;
+    }
+
+    /* Título */
+    h1 {
+      color: #5C287F;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Botões de perfil */
+    .profile-option {
+      border: 2px solid #9C4AFF;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+      background-color: #fff;
+      color: #5C287F;
+      font-weight: bold;
+    }
+
+    .profile-option:hover {
+      background-color: #E0C9FF;
+    }
+
+    .profile-option.selected {
+      background-color: #9C4AFF;
+      color: #fff;
+    }
+
+    /* Botão voltar ao login */
+    .back-button {
+      margin-top: 20px;
+      background-color: #fff;
+      border: 2px solid #9C4AFF;
+      border-radius: 5px;
+      padding: 10px;
+      color: #5C287F;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background-color: #E0C9FF;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- Indicador de progresso -->
+    <div class="progress">
+      <div class="circle active"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
+    <!-- Título -->
+    <h1>Perfil</h1>
+
+    <!-- Opções de perfil -->
+    <div class="profile-option" onclick="selectProfile(this, 'Paciente')">
+      Paciente<br>
+      <small>Fui recomendado por um profissional.</small>
+    </div>
+
+    <div class="profile-option" onclick="selectProfile(this, 'Fonoaudiólogo')">
+      Fonoaudiólogo<br>
+      <small>Irei utilizar o jogo no meu trabalho.</small>
+    </div>
+
+    <!-- Botão voltar ao login -->
+    <a href="#" class="back-button">Voltar ao Login</a>
+  </div>
+
+  <script>
+    // Selecionar perfil
+    function selectProfile(element, profile) {
+      // Remover a classe "selected" de todos os botões
+      document.querySelectorAll('.profile-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+
+      // Adicionar a classe "selected" ao botão clicado
+      element.classList.add('selected');
+
+      // Exibir o perfil selecionado no console (pode ser adaptado para outra lógica)
+      console.log(`Perfil selecionado: ${profile}`);
+    }
+  </script>
+</body>
+</html>

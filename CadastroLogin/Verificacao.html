@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificação</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #9C4AFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background-color: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Indicador de progresso */
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress .circle {
+      width: 15px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+
+    .progress .circle.active {
+      background-color: #4CAF50;
+    }
+
+    /* Título */
+    h1 {
+      color: #5C287F;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Texto de descrição */
+    .description {
+      font-size: 14px;
+      color: #5C287F;
+      margin-bottom: 20px;
+    }
+
+    /* Campo de código */
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* Link para reenviar código */
+    .resend {
+      font-size: 14px;
+      color: #53269B;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .resend:hover {
+      text-decoration: underline;
+    }
+
+    /* Botão */
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .button.verify {
+      background-color: #ccc;
+      color: #808080;
+    }
+
+    .button.verify.active {
+      background-color: #40EF78;
+      color: #53269B;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- Indicador de progresso -->
+    <div class="progress">
+      <div class="circle active"></div>
+      <div class="circle active"></div>
+      <div class="circle active"></div>
+      <div class="circle"></div>
+    </div>
+
+    <!-- Título -->
+    <h1>Verificação</h1>
+
+    <!-- Texto de descrição -->
+    <p class="description">Enviamos um código de verificação para o seu e-mail cadastrado.<br>Insira o código abaixo para continuar.</p>
+
+    <!-- Campo de código -->
+    <input type="text" id="verification-code" placeholder="Digite o código">
+
+    <!-- Link para reenviar código -->
+    <p class="description">Não recebeu o código? <span class="resend" id="resend-code">Clique aqui para enviar novamente</span>.</p>
+
+    <!-- Botão de verificar -->
+    <button type="button" class="button verify" id="verify-button" disabled>Verificar</button>
+  </div>
+
+  <script>
+    const verificationCodeInput = document.getElementById('verification-code');
+    const verifyButton = document.getElementById('verify-button');
+
+    verificationCodeInput.addEventListener('input', () => {
+      if (verificationCodeInput.value.trim() !== '') {
+        verifyButton.disabled = false;
+        verifyButton.classList.add('active');
+      } else {
+        verifyButton.disabled = true;
+        verifyButton.classList.remove('active');
+      }
+    });
+
+    document.getElementById('resend-code').addEventListener('click', () => {
+      alert('Um novo código foi enviado para o seu e-mail.');
+    });
+  </script>
+</body>
+</html>

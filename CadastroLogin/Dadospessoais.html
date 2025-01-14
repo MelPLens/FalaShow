@@ -1,113 +1,236 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados Pessoais - Fallout Show</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados Pessoais</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #9C4AFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background-color: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Indicador de progresso */
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress .circle {
+      width: 15px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+
+    .progress .circle.active {
+      background-color: #4CAF50;
+    }
+
+    /* Título */
+    h1 {
+      color: #5C287F;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Formulário */
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #5C287F;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Requisitos da senha */
+    .requirements {
+      list-style: none;
+      margin-bottom: 20px;
+      padding-left: 0;
+    }
+
+    .requirements li {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .requirements li.valid {
+      color: #4CAF50;
+    }
+
+    /* Termos de uso */
+    .terms {
+      font-size: 12px;
+      color: #808080;
+      margin-bottom: 20px;
+    }
+
+    .terms a {
+      color: #53269B;
+      text-decoration: none;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    /* Botões */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button.back {
+      background-color: #fff;
+      border: 2px solid #9C4AFF;
+      color: #5C287F;
+    }
+
+    .button.back:hover {
+      background-color: #E0C9FF;
+    }
+
+    .button.next {
+      background-color: #ccc;
+      color: #808080;
+    }
+
+    .button.next.active {
+      background-color: #40EF78;
+      color: #53269B;
+    }
+  </style>
 </head>
-<style>
-    .progress-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.progress-bar {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-}
-
-.step {
-    padding: 10px;
-    background-color: #ddd;
-    border-radius: 50%;
-    text-align: center;
-    width: 40px;
-    height: 40px;
-}
-
-.completed {
-    background-color: #40EF78;
-    color: white;
-}
-
-.data-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 15px;
-    width: 300px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.input-field {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    background-color: #f8f8f8;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.btn {
-    width: 45%;
-    padding: 10px;
-    background-color: #40EF78;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-</style>
 <body>
-
-<!-- Cabeçalho -->
-<header class="header">
-    <h1 class="title">Fallout Show</h1>
-    <div class="menu">
-        <button class="hamburger-menu">&#9776;</button>
+  <div class="box">
+    <!-- Indicador de progresso -->
+    <div class="progress">
+      <div class="circle active"></div>
+      <div class="circle active"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
     </div>
-</header>
 
-<!-- Progresso -->
-<div class="progress-container">
-    <div class="progress-bar">
-        <div class="step completed">Perfil</div>
-        <div class="step">Dados Pessoais</div>
-        <div class="step">Informações</div>
-        <div class="step">Verificação</div>
-    </div>
-</div>
+    <!-- Título -->
+    <h1>Dados Pessoais</h1>
 
-<!-- Dados Pessoais -->
-<div class="data-container">
-    <h2>Preencha seus dados pessoais</h2>
-    <form id="data-form">
-        <input type="email" id="email" placeholder="E-mail" class="input-field">
-        <input type="password" id="senha" placeholder="Senha" class="input-field">
-        <input type="password" id="confirm-senha" placeholder="Confirmar Senha" class="input-field">
-        <label>
-            <input type="checkbox" id="agree-terms"> Concordo com os termos de uso
-        </label>
-        <div class="buttons">
-            <button type="button" class="btn" id="back-btn">Voltar</button>
-            <button type="submit" class="btn" id="next-btn">Próximo</button>
-        </div>
+    <!-- Formulário -->
+    <form id="personal-data-form">
+      <label for="email">E-mail *</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Senha *</label>
+      <input type="password" id="password" required>
+
+      <label for="confirm-password">Confirmar Senha *</label>
+      <input type="password" id="confirm-password" required>
+
+      <ul class="requirements">
+        <li id="number">Senha deve conter no mínimo um número</li>
+        <li id="length">No mínimo 8 dígitos</li>
+        <li id="uppercase">No mínimo uma letra maiúscula</li>
+        <li id="lowercase">No mínimo uma letra minúscula</li>
+      </ul>
+
+      <p class="terms">
+        Ao clicar em “Próximo” você concorda com nossos
+        <a href="https://termos.probrain.com.br/pub/terms/terms_2022.pdf" target="_blank">Termos de Uso</a> e
+        <a href="https://termos.probrain.com.br/pub/policies/policies_2022.pdf" target="_blank">Privacidade</a>.
+      </p>
+
+      <!-- Botões -->
+      <div class="button-container">
+        <button type="button" class="button back">Voltar</button>
+        <button type="submit" class="button next" disabled>Próximo</button>
+      </div>
     </form>
-</div>
+  </div>
 
-<script src="script.js"></script>
+  <script>
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const requirements = {
+      number: /\d/,
+      length: /.{8,}/,
+      uppercase: /[A-Z]/,
+      lowercase: /[a-z]/
+    };
+
+    const requirementElements = {
+      number: document.getElementById('number'),
+      length: document.getElementById('length'),
+      uppercase: document.getElementById('uppercase'),
+      lowercase: document.getElementById('lowercase')
+    };
+
+    const nextButton = document.querySelector('.button.next');
+
+    function validatePassword() {
+      let isValid = true;
+
+      for (const [key, regex] of Object.entries(requirements)) {
+        if (regex.test(passwordInput.value)) {
+          requirementElements[key].classList.add('valid');
+        } else {
+          requirementElements[key].classList.remove('valid');
+          isValid = false;
+        }
+      }
+
+      if (isValid && passwordInput.value === confirmPasswordInput.value) {
+        nextButton.disabled = false;
+        nextButton.classList.add('active');
+      } else {
+        nextButton.disabled = true;
+        nextButton.classList.remove('active');
+      }
+    }
+
+    passwordInput.addEventListener('input', validatePassword);
+    confirmPasswordInput.addEventListener('input', validatePassword);
+  </script>
 </body>
 </html>
