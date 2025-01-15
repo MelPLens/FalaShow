@@ -167,8 +167,11 @@
 
       <!-- Botões -->
       <div class="button-container">
-        <button type="button" class="button back">Voltar</button>
-        <button type="submit" class="button next">Próximo</button>
+        <button type="button" class="button back" onclick="window.location.href='Dadospessoais.html';">Voltar</button>
+        <form id="form-informações">
+          <!-- Seus campos de formulário -->
+          <button type="button" class="button next">Próximo</button>
+      </form>
       </div>
     </form>
   </div>
@@ -177,6 +180,14 @@
     const pacienteFields = document.getElementById('paciente-fields');
     const fonoFields = document.getElementById('fono-fields');
     const semRegistroCheckbox = document.getElementById('sem-registro');
+// Seleciona o botão
+const botaoProximo = document.querySelector('.button.next');
+
+// Adiciona o evento de clique
+botaoProximo.addEventListener('click', () => {
+    // Redireciona para a próxima página
+    window.location.href = 'Verificacao.html';
+});
 
     // Simula alternância entre perfis (adicione lógica real conforme necessário)
     const perfilSelecionado = 'paciente'; // Altere para 'fono' para testar o outro perfil

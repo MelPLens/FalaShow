@@ -183,9 +183,13 @@
 
       <!-- Botões -->
       <div class="button-container">
-        <button type="button" class="button back">Voltar</button>
-        <button type="submit" class="button next" disabled>Próximo</button>
-      </div>
+        <button type="button" class="button back" onclick="window.location.href='cadastro.html';">Voltar</button>
+
+        <form id="form-dados-pessoais">
+          <!-- Seus campos de formulário -->
+          <button type="button" class="button next">Próximo</button>
+      </form>
+            </div>
     </form>
   </div>
 
@@ -228,6 +232,14 @@
         nextButton.classList.remove('active');
       }
     }
+// Seleciona o botão
+const botaoProximo = document.querySelector('.button.next');
+
+// Adiciona o evento de clique
+botaoProximo.addEventListener('click', () => {
+    // Redireciona para a próxima página
+    window.location.href = 'informações.html';
+});
 
     passwordInput.addEventListener('input', validatePassword);
     confirmPasswordInput.addEventListener('input', validatePassword);

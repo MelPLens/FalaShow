@@ -78,22 +78,39 @@
       color: #fff;
     }
 
-    /* Botão voltar ao login */
-    .back-button {
+    /* Botões */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
       margin-top: 20px;
-      background-color: #fff;
-      border: 2px solid #9C4AFF;
-      border-radius: 5px;
-      padding: 10px;
-      color: #5C287F;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
     }
 
-    .back-button:hover {
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button.back {
+      background-color: #fff;
+      border: 2px solid #9C4AFF;
+      color: #5C287F;
+    }
+
+    .button.back:hover {
       background-color: #E0C9FF;
+    }
+
+    .button.next {
+      background-color: #ccc;
+      color: #808080;
+    }
+
+    .button.next.active {
+      background-color: #40EF78;
+      color: #53269B;
     }
   </style>
 </head>
@@ -121,11 +138,16 @@
       <small>Irei utilizar o jogo no meu trabalho.</small>
     </div>
 
-    <!-- Botão voltar ao login -->
-    <a href="#" class="back-button">Voltar ao Login</a>
+    <!-- Botões -->
+    <div class="button-container">
+      <a href="Login.html" class="button back">Voltar ao Login</a>
+      <button class="button next" id="nextButton" disabled>Próximo</button>
+    </div>
   </div>
 
   <script>
+    const nextButton = document.getElementById('nextButton');
+
     // Selecionar perfil
     function selectProfile(element, profile) {
       // Remover a classe "selected" de todos os botões
@@ -136,7 +158,16 @@
       // Adicionar a classe "selected" ao botão clicado
       element.classList.add('selected');
 
-      // Exibir o perfil selecionado no console (pode ser adaptado para outra lógica)
+      // Ativar o botão "Próximo"
+      nextButton.disabled = false;
+      nextButton.classList.add('active');
+
+      // Redirecionar ao clicar em "Próximo"
+      nextButton.onclick = () => {
+        window.location.href = 'DadosPessoais.html';
+      };
+
+      // Exibir o perfil selecionado no console (para depuração)
       console.log(`Perfil selecionado: ${profile}`);
     }
   </script>
