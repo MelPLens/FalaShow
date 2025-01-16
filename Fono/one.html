@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fala Show - Fonoaudiólogo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #EFE6FD;
+        }
+
+        .header {
+            padding: 15px;
+            background-color: #6C63FF;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #6C63FF;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            text-decoration: underline;
+        }
+
+        .patient-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .patient-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .patient-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .patient-details {
+            margin-top: 20px;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .patient-details img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 20px;
+            margin-top: 10px;
+        }
+
+        .progress-bar > div {
+            height: 100%;
+            background-color: #6C63FF;
+            width: 70%;
+            text-align: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .button-group button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6C63FF;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #574bff;
+        }
+
+        .theme-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .theme-option {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+            flex: 1 1 calc(33.333% - 10px);
+        }
+
+        .theme-option:hover {
+            background-color: #e8e8e8;
+        }
+
+        @media (max-width: 768px) {
+            .theme-option {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-option {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Fala Show - Fonoaudiólogo</div>
+
+    <div class="content">
+        <div class="patient-list">
+            <div class="patient-item" onclick="showPatientDetails('Maria Santos Oliveira')">
+                Maria Santos Oliveira
+            </div>
+            <div class="patient-item" onclick="showPatientDetails('João Silva')">
+                João Silva
+            </div>
+            <div class="patient-item" onclick="showPatientDetails('Lucas Pereira')">
+                Lucas Pereira
+            </div>
+        </div>
+
+        <div class="patient-details" id="patient-details" style="display: none;">
+            <div style="text-align: center;">
+                <img src="https://via.placeholder.com/80" alt="Foto da Criança">
+                <h3 id="patient-name">Maria Santos Oliveira</h3>
+            </div>
+
+            <div class="button-group">
+                <button onclick="showSection('info')">Informações Pessoais</button>
+                <button onclick="showSection('progress')">Progresso nos Jogos</button>
+                <button onclick="showSection('customization')">Personalização Jogos</button>
+                <button onclick="showSection('theme')">Temática</button>
+            </div>
+
+            <div id="info" style="display: none;">
+                <p><strong>Data de Nascimento:</strong> 12/03/2015</p>
+                <p><strong>Responsável:</strong> <button>Ver Responsável</button></p>
+                <p><strong>Diagnóstico:</strong> Apraxia (a confirmar)</p>
+            </div>
+
+            <div id="progress" style="display: none;">
+                <h4>Progresso nos Jogos</h4>
+                <div class="progress-bar">
+                    <div>70%</div>
+                </div>
+            </div>
+
+            <div id="customization" style="display: none;">
+                <h4>Personalização de Jogos</h4>
+                <button>Trissílabas</button>
+                <button>Ditongos</button>
+                <button>Monossílabos</button>
+            </div>
+
+            <div id="theme" style="display: none;">
+                <h4>Escolha Temática</h4>
+                <div class="theme-options">
+                    <div class="theme-option">Dinossauros</div>
+                    <div class="theme-option">Mundo Animal</div>
+                    <div class="theme-option">Princesas</div>
+                    <div class="theme-option">Outro</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button onclick="navigate('patients')">Pacientes</button>
+        <button onclick="navigate('agenda')">Agenda</button>
+        <button onclick="navigate('plans')">Planos</button>
+        <button onclick="navigate('responsibles')">Responsáveis</button>
+        <button onclick="navigate('support')">Suporte</button>
+    </div>
+
+    <script>
+        function showPatientDetails(name) {
+            document.getElementById('patient-details').style.display = 'block';
+            document.getElementById('patient-name').innerText = name;
+        }
+
+        function showSection(section) {
+            const sections = ['info', 'progress', 'customization', 'theme'];
+            sections.forEach(s => {
+                document.getElementById(s).style.display = s === section ? 'block' : 'none';
+            });
+        }
+
+        function navigate(option) {
+            alert(`Navegando para: ${option}`);
+        }
+    </script>
+</body>
+</html>
